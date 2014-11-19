@@ -104,19 +104,19 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
     {
     if( line[0] != '#' )
       {
-      char filename[MAXLINE];
+      char meshfilename[MAXLINE];
       int  retval;
       if( subjInfo )
         {
-        retval = sscanf(line, " %s ",  filename);
+        retval = sscanf(line, " %s ",  meshfilename);
         }
       else
         {
-        retval = sscanf(line, " %d %lf %s ", &(groupLabel[curLine]), &(scaleFactor[curLine]), filename);
+        retval = sscanf(line, " %d %lf %s ", &(groupLabel[curLine]), &(scaleFactor[curLine]), meshfilename);
         }
       if( retval > 0 )
         {
-        meshFileName[curLine] = std::string(filename);
+        meshFileName[curLine] = std::string(meshfilename);
         curLine++;
         }
       }
@@ -381,7 +381,13 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
     }
   diffFile.close();
 
-  // compute Covariance ellipsoids of groupA
+  PointsContainerPointer pointsAB = PointsContainer::New();
+
+  std::cout << "this version does not support writing out covariance ellipsoid stats" << std::endl;
+  
+  /* taking out all covariance stuff
+
+    // compute Covariance ellipsoids of groupA
   string FilenameCovarA(outbase);
   FilenameCovarA = FilenameCovarA + string("_CovarA.txt");
   diffFile.open( FilenameCovarA.c_str() );
@@ -405,12 +411,6 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
         sample->PushBack(mv);
         }
       }
-
-    /*  CovarianceCalculatorType::Pointer covarianceCalculator = CovarianceCalculatorType::New() ;
-      covarianceCalculator->SetInputSample(sample.GetPointer()) ;
-      covarianceCalculator->Update();
-
-      const CovarianceCalculatorType::OutputType*  outMatrix = covarianceCalculator->GetOutput();*/
 
     CovarianceSampleFilterType::Pointer covarianceSampleFilterType = CovarianceSampleFilterType::New();
 
@@ -473,12 +473,6 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
         }
       }
 
-    /*  CovarianceCalculatorType::Pointer covarianceCalculator = CovarianceCalculatorType::New() ;
-      covarianceCalculator->SetInputSample(sample.GetPointer()) ;
-      covarianceCalculator->Update();
-
-      const CovarianceCalculatorType::OutputType*  outMatrix = covarianceCalculator->GetOutput();*/
-
     CovarianceSampleFilterType::Pointer covarianceSampleFilterType = CovarianceSampleFilterType::New();
     covarianceSampleFilterType->SetInput(sample.GetPointer() );
     covarianceSampleFilterType->Update();
@@ -521,7 +515,6 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
   diffFile << "DIMENSION = 9" << endl;
   diffFile << "TYPE = Ellipsoid" << endl;
 
-  PointsContainerPointer pointsAB = PointsContainer::New();
   for( int feat = 0; feat < numFeatures / MeasurementVectorSize; feat++ )
     {
     SampleType::Pointer sample = SampleType::New();
@@ -536,9 +529,6 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
         }
       sample->PushBack(mv);
       }
-    /* MeanCalculatorType::Pointer meanCalculator = MeanCalculatorType::New() ;
-     meanCalculator->SetInputSample(sample.GetPointer());
-     meanCalculator->Update() ;*/
 
     MeanSampleFilterType::Pointer meanSampleFilter = MeanSampleFilterType::New();
     // meanSampleFilter->SetInputSample(sample.GetPointer());
@@ -553,14 +543,6 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
       vert[dim] = (*meanOutput)[dim];
       }
     pointsAB->InsertElement(feat, PointType(vert) );
-
-    /*  CovarianceCalculatorType::Pointer covarianceCalculator = CovarianceCalculatorType::New() ;
-      covarianceCalculator->SetInputSample(sample.GetPointer()) ;
-    //  covarianceCalculator->SetMean(meanCalculator->GetOutput()) ;
-  covarianceCalculator->SetMean(meanSampleFilter->GetOutput()) ;
-      covarianceCalculator->Update();
-
-      const CovarianceCalculatorType::OutputType*  outMatrix = covarianceCalculator->GetOutput();*/
 
     CovarianceSampleFilterType::Pointer covarianceSampleFilterType = CovarianceSampleFilterType::New();
     covarianceSampleFilterType->SetInput(sample.GetPointer() );
@@ -594,7 +576,7 @@ load_MeshList_file(char * filename, char * subjInfo, bool scaleOn, bool signDist
     diffFile << std::endl;
 
     }
-  diffFile.close();
+  diffFile.close(); */
 
   // write mesh
   surfaceMesh->SetPoints(pointsAB);

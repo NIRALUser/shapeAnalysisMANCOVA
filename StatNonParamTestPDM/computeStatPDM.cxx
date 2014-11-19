@@ -493,7 +493,7 @@ int doTesting(int numSubjects, int numFeatures, int numPerms, int tupelSize,
       }
     std::cout << "computing FDR " << std::endl;
     // FDRFilter->SetInputSample(pvalueSample.GetPointer());
-    FDRFilter->SetInput(pvalueSample.GetPointer() );
+    FDRFilter->SetSample(pvalueSample.GetPointer() );
     FDRFilter->Update();
 
     pvalueSample = FDRFilter->GetOutput();

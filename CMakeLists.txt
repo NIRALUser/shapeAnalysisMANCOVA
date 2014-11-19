@@ -24,9 +24,16 @@ endif()
 
 
 
-#add_subdirectory(StatNonParamTestPDM)
-add_subdirectory(shapeAnalysisMANCOVA)
+option(COMPILE_StatNonParamTestPDM "Compile StatNonParamTestPDM." OFF)
+option(COMPILE_shapeAnalysisMANCOVA "Compile shapeAnalysisMANCOVA." OFF)
 
+if (COMPILE_StatNonParamTestPDM)
+   add_subdirectory(StatNonParamTestPDM)
+endif(COMPILE_StatNonParamTestPDM)
+
+if (COMPILE_StatNonParamTestPDM)
+   add_subdirectory(shapeAnalysisMANCOVA)
+endif (COMPILE_StatNonParamTestPDM)
 
 option(COMPILE_shapeAnalysisMANCOVA_Wizard "Compile shapeAnalysisMANCOVA_Wizard." OFF)
 
