@@ -66,7 +66,7 @@ int shapeAnalysisMANCOVA_Wizard::NumberComa()  // test if the file is correct : 
   nber_coma_ref = 0;
   int nber_row;
   int problem = -1;
-  int space = 0;
+  unsigned int space = 0;
   int emptyline = 0;
   nber_row = 0;
   std::ifstream file(file_name, std::ios::in);
