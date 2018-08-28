@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5)
 project(shapeAnalysisMANCOVAPackage)
 
 find_package(ITK REQUIRED)
@@ -46,6 +46,4 @@ if(COMPILE_shapeAnalysisMANCOVA_Wizard)
   endif()
   add_subdirectory(shapeAnalysisMANCOVA_Wizard)
 endif()
-
-
 
