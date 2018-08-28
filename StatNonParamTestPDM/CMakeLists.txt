@@ -4,12 +4,12 @@ project( StatNonParamTestPDM )
 find_package(ITK REQUIRED)
 if(ITK_FOUND) 
   include(${ITK_USE_FILE})
-endif(ITK_FOUND) 
+endif()
 
 find_package(VTK REQUIRED)
 if(VTK_FOUND) 
   include(${VTK_USE_FILE})
-endif(VTK_FOUND) 
+endif()
 
 
 set(StatNonParamTestPDM_SRCS
