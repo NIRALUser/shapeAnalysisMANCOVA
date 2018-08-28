@@ -67,7 +67,6 @@ int shapeAnalysisMANCOVA_Wizard::NumberComa()  // test if the file is correct : 
   int nber_row;
   int problem = -1;
   unsigned int space = 0;
-  int emptyline = 0;
   nber_row = 0;
   std::ifstream file(file_name, std::ios::in);
 
@@ -88,10 +87,6 @@ int shapeAnalysisMANCOVA_Wizard::NumberComa()  // test if the file is correct : 
           {
           space++;
           }
-        }
-      if( space != 0 && line.size() == space )
-        {
-        emptyline = 1;
         }
       if( problem != 0 && line.size() != space )
         {
@@ -208,8 +203,8 @@ void shapeAnalysisMANCOVA_Wizard::infile_ok_display()
         std::ifstream file(file_name, std::ios::in); // display the file in the grid
         if( file )
           {
-          int col, row, nb;
-          col = 0; row = 0; nb = 0;
+          int col, row;
+          col = 0; row = 0;
           std::string line, word;
           spinBox_col->setValue( (NumberComa() + 1) );
           spinBox_data->setValue(nbRow[0] - 1);
