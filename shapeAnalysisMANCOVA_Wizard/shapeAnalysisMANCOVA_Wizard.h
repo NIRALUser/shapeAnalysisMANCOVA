@@ -110,7 +110,6 @@ signals:
 
 private:
   std::vector<int> modifyHeaderName;  // size of the vector=1. If fill with1->we want to change the name of a header
-  QString          pathSlicer;
   QString          file_name; // path of the cvs loaded + name of the file
   QString          path;      // to memorise the path to save the new csv file
   QString          name;      // name of the new cvs file
@@ -171,11 +170,6 @@ private:
   std::vector<int> independentColumn; // all the numbers of the independent variable columns
   std::vector<int> groupColumn;       // all the numbers of the group columns
   std::vector<int> nbRow;
-
-  // QString pathSlicer;
-  // itksysProcess* m_Process;
-  // std::vector<const char*> args;
-
 };
 
 #endif
