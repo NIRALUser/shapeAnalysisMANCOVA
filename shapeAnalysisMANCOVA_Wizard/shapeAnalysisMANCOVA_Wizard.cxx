@@ -416,7 +416,7 @@ void shapeAnalysisMANCOVA_Wizard::displayLineEditIndependent(int /*c*/)
   lineEdit_inde_selected->setText(QApplication::translate("MainWindow", char_num_column, 0, QApplication::UnicodeUTF8) );
 }
 
-void shapeAnalysisMANCOVA_Wizard::displayLineEditGroup(int c)  // diplay the list of the group columns
+void shapeAnalysisMANCOVA_Wizard::displayLineEditGroup(int /*c*/)  // diplay the list of the group columns
 {
   std::string NumberOfGroupColumn;
 
@@ -881,7 +881,7 @@ void shapeAnalysisMANCOVA_Wizard::mutual_exclusion_gp(int state)
     }
 }
 
-void shapeAnalysisMANCOVA_Wizard::mutual_exclusion_unseclect(int state)
+void shapeAnalysisMANCOVA_Wizard::mutual_exclusion_unseclect(int /*state*/)
 {
   if( checkBox_unselect->isChecked() )
     {
