@@ -19,11 +19,11 @@ SET(StatNonParamTestPDM_SRCS
   computeStatPDM_vector.cxx 
   itkMeshTovtkPolyData.cxx 
   vtkPolyDataToitkMesh.cxx
-)
+  )
 
 add_executable(StatNonParamTestPDM ${StatNonParamTestPDM_SRCS})
 
 target_link_libraries( StatNonParamTestPDM
   ${ITK_LIBRARIES}
   ${VTK_LIBRARIES}
-)
+  )

@@ -22,8 +22,6 @@ if(Boost_FOUND)
   LINK_DIRECTORIES(${Boost_LIBRARY_DIRS} )
 endif()
 
-
-
 option(COMPILE_StatNonParamTestPDM "Compile StatNonParamTestPDM." OFF)
 option(COMPILE_shapeAnalysisMANCOVA "Compile shapeAnalysisMANCOVA." OFF)
 
