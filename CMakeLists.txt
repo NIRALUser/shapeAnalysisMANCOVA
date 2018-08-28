@@ -19,7 +19,7 @@ endif(GenerateCLP_FOUND)
 find_package( Boost )
 if(Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
-  LINK_DIRECTORIES(${Boost_LIBRARY_DIRS} )
+  link_directories(${Boost_LIBRARY_DIRS} )
 endif()
 
 option(COMPILE_StatNonParamTestPDM "Compile StatNonParamTestPDM." OFF)

@@ -12,7 +12,7 @@ if(VTK_FOUND)
 endif(VTK_FOUND) 
 
 
-SET(StatNonParamTestPDM_SRCS
+set(StatNonParamTestPDM_SRCS
   createPerm.cxx 
   main.cxx
   computeStatPDM.cxx 
